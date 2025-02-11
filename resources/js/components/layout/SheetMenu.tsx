@@ -8,7 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import LogoV1 from "@/components/LogoV1";
+import LogoV1 from "@/components/LogoIcon";
 
 export function SheetMenu() {
   return (

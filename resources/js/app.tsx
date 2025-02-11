@@ -15,7 +15,7 @@ createInertiaApp({
     resolve:  name => {
         const pages = import.meta.glob('./Pages/**/*.tsx', { eager: true })
         let page = pages[`./Pages/${name}.tsx`] as { default: { layout?: (page: any) => JSX.Element } }
-        if (name.toLowerCase().includes('auth') || name.toLowerCase().includes('terms')) {
+        if (name.toLowerCase().includes('auth') || name.toLowerCase().includes('terms') || name.toLowerCase().includes('welcome')) {
             return page
         }
         page.default.layout = ((page: any) => <MainLayout children={page} />)

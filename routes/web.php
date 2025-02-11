@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    redirect()->route('dashboard');
+   return Inertia::render('Welcome');
 });
 
 Route::get('terms-of-service', function () {

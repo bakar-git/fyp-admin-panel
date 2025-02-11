@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/components/LogoV1';
+import LogoV1 from '@/components/LogoIcon';
 
 export default function VerifyEmail({ status }: { status?: string }) {
     const { post, processing } = useForm({});

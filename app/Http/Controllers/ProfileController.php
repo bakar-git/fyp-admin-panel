@@ -19,7 +19,6 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
     }
@@ -49,7 +48,12 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
+
         $user = $request->user();
+
+        if ($user->id === 1){
+            dd("Sorry, this account cant be deleted");
+        }
 
         Auth::logout();
 

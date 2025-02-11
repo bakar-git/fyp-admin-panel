@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react';
 
 export default function Dashboard() {
     const breadcrumbData = [
-        { href: "/expense", label: "Expense List" },
+        { href: "/dashboard", label: "Dashboard" },
     ];
     return (
         <ContentLayout items={breadcrumbData} >

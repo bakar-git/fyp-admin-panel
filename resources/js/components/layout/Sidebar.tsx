@@ -3,7 +3,9 @@ import { SidebarToggle } from "@/components/layout/SidebarToggle";
 import { useSidebar } from "@/components/layout/sidebar-hooks/use-sidebar";
 import { useStore } from "@/components/layout/sidebar-hooks/use-store";
 import { cn } from "@/lib/utils";
-import LogoV1 from "@/components/LogoV1";
+import LogoV1 from "@/components/LogoIcon";
+import { Link } from "@inertiajs/react";
+import LogoFull from "../LogoFull";
 
 export function Sidebar() {
   const sidebar = useStore(useSidebar, (x) => x);
@@ -23,10 +25,9 @@ export function Sidebar() {
         onMouseLeave={() => setIsHover(false)}
         className="relative h-full flex flex-col px-3 pb-2 overflow-y-auto shadow-md dark:shadow-zinc-800"
       >
-        <div className="flex items-center justify-center gap-2 h-14 font-medium">
-          <LogoV1 className={isOpen ? "" : "hidden"} />
-          POSTIFY
-        </div>
+        <Link href='/'>
+          <LogoFull className="h-14" />
+        </Link>
         <Menu isOpen={getOpenState()} />
       </div>
     </aside>
