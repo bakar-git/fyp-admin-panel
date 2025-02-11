@@ -2,15 +2,15 @@ import { Ellipsis, LogOut } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { getMenuList } from "@/lib/menu-list";
-import { Button } from "@/Components/ui/button";
-import { ScrollArea } from "@/Components/ui/scroll-area";
-import { CollapseMenuButton } from "@/Components/layout/CollapseMenuButton";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { CollapseMenuButton } from "@/components/layout/CollapseMenuButton";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider
-} from "@/Components/ui/tooltip";
+} from "@/components/ui/tooltip";
 import { Link, usePage } from "@inertiajs/react";
 
 interface MenuProps {

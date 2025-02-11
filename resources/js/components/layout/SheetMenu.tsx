@@ -1,13 +1,13 @@
 import { MenuIcon } from "lucide-react";
 
-import { Button } from "@/Components/ui/button";
-import { Menu } from "@/Components/layout/Menu";
+import { Button } from "@/components/ui/button";
+import { Menu } from "@/components/layout/Menu";
 import {
   Sheet,
   SheetHeader,
   SheetContent,
   SheetTrigger,
-} from "@/Components/ui/sheet";
+} from "@/components/ui/sheet";
 import LogoV1 from "../LogoV1";
 
 export function SheetMenu() {

@@ -1,4 +1,4 @@
-import { ContentLayout } from '@/Components/layout/ContentLayout';
+import { ContentLayout } from '@/components/layout/ContentLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Dashboard() {

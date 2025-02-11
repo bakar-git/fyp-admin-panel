@@ -1,5 +1,5 @@
-import { UserNav } from "@/Components/layout/UserNav";
-import { SheetMenu } from "@/Components/layout/SheetMenu";
+import { UserNav } from "@/components/layout/UserNav";
+import { SheetMenu } from "@/components/layout/SheetMenu";
 import { BreadcrumbItem, NavBreadcrumb } from "./NavBreadcrumb";
 
 export function Navbar({ items }: { items?: BreadcrumbItem[] }) {

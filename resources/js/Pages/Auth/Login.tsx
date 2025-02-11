@@ -1,9 +1,9 @@
-import { Checkbox } from '@/Components/ui/checkbox';
-import { Input } from '@/Components/ui/input';
-import { Button } from '@/Components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/Components/LogoV1';
+import LogoV1 from '@/components/LogoV1';
 import { GalleryVerticalEndIcon } from 'lucide-react';
 import {
     Card,
@@ -11,7 +11,7 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-  } from "@/Components/ui/card"
+  } from "@/components/ui/card"
 
 export default function Login({
     status,

@@ -1,8 +1,8 @@
-import { Input } from '@/Components/ui/input';
-import { Button } from '@/Components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/Components/LogoV1';
+import LogoV1 from '@/components/LogoV1';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({

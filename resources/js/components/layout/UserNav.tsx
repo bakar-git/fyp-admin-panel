@@ -1,16 +1,16 @@
 import { LayoutGrid, LogOut, User, SunIcon, MoonIcon, Globe, Check } from "lucide-react";
 import { useThemeStore } from "@/stores/theme-store";
-import { Switch } from "@/Components/ui/switch";
+import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 
-import { Button } from "@/Components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider
-} from "@/Components/ui/tooltip";
+} from "@/components/ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from "@/Components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { Link } from "@inertiajs/react";
 
 const languages = [

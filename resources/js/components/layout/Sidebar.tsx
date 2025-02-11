@@ -1,7 +1,7 @@
-import { Menu } from "@/Components/layout/Menu";
-import { SidebarToggle } from "@/Components/layout/SidebarToggle";
-import { useSidebar } from "@/Components/layout/sidebar-hooks/use-sidebar";
-import { useStore } from "@/Components/layout/sidebar-hooks/use-store";
+import { Menu } from "@/components/layout/Menu";
+import { SidebarToggle } from "@/components/layout/SidebarToggle";
+import { useSidebar } from "@/components/layout/sidebar-hooks/use-sidebar";
+import { useStore } from "@/components/layout/sidebar-hooks/use-store";
 import { cn } from "@/lib/utils";
 import LogoV1 from "../LogoV1";
 

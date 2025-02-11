@@ -1,6 +1,6 @@
-import { Sidebar } from "@/Components/layout/Sidebar";
-import { useSidebar } from "@/Components/layout/sidebar-hooks/use-sidebar";
-import { useStore } from "@/Components/layout/sidebar-hooks/use-store";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { useSidebar } from "@/components/layout/sidebar-hooks/use-sidebar";
+import { useStore } from "@/components/layout/sidebar-hooks/use-store";
 import { cn } from "@/lib/utils";
 
 export default function MainLayout({

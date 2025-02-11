@@ -8,13 +8,13 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "@/Components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/Components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { HomeIcon } from "lucide-react"
 import { Link } from "@inertiajs/react"
 
