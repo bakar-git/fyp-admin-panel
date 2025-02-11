@@ -6,7 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { useThemeStore } from './stores/theme-store';
-import MainLayout from './Components/layout/MainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -15,7 +15,7 @@ createInertiaApp({
     resolve:  name => {
         const pages = import.meta.glob('./Pages/**/*.tsx', { eager: true })
         let page = pages[`./Pages/${name}.tsx`] as { default: { layout?: (page: any) => JSX.Element } }
-        if (name.toLowerCase().includes('auth')) {
+        if (name.toLowerCase().includes('auth') || name.toLowerCase().includes('terms')) {
             return page
         }
         page.default.layout = ((page: any) => <MainLayout children={page} />)

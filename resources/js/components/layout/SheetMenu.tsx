@@ -8,7 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import LogoV1 from "../LogoV1";
+import LogoV1 from "@/components/LogoV1";
 
 export function SheetMenu() {
   return (
@@ -20,9 +20,9 @@ export function SheetMenu() {
       </SheetTrigger>
       <SheetContent className="sm:w-72 px-3 h-full flex flex-col" side="left">
         <SheetHeader>
-          <div className="flex items-center justify-center h-14">
-            <LogoV1 className="size-12" />
-            <h1 className="font-bold">POSTIFY</h1>
+          <div className="flex items-center justify-center gap-2 h-14 font-medium">
+            <LogoV1 />
+            POSTIFY
           </div>
         </SheetHeader>
         <Menu isOpen />

@@ -2,8 +2,16 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/components/LogoV1';
 import { Link } from '@inertiajs/react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Label } from '@/components/ui/label';
+import LogoV1 from '@/components/LogoV1';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -16,63 +24,61 @@ export default function ForgotPassword({ status }: { status?: string }) {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center">
+        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
             <Head title="Forgot Password" />
-            <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-lg">
-                <div className="text-center">
-                    <div className="flex items-center justify-center h-14">
-                        <LogoV1 className="size-20" />
-                        <h1 className="font-bold">POSTIFY</h1>
+            <div className="flex w-full max-w-sm flex-col gap-6">
+                <a href="#" className="flex items-center gap-2 self-center font-medium">
+                    <LogoV1 />
+                    POSTIFY
+                </a>
+                <div className="flex flex-col gap-6">
+                    <Card>
+                        <CardHeader className="text-center">
+                            <CardTitle className="text-xl">Forgot Password</CardTitle>
+                            <CardDescription>
+                                Enter your email to reset password
+                                {status && (
+                                    <div className="mt-2 text-sm font-medium text-green-600">
+                                        {status}
+                                    </div>
+                                )}
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <form onSubmit={submit}>
+                                <div className="grid gap-6">
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="email">Email</Label>
+                                        <Input
+                                            id="email"
+                                            type="email"
+                                            value={data.email}
+                                            placeholder="name@example.com"
+                                            onChange={(e) => setData('email', e.target.value)}
+                                        />
+                                        {errors.email && (
+                                            <span className="text-sm text-red-500">{errors.email}</span>
+                                        )}
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <Button type="submit" className="w-full" disabled={processing}>
+                                            Email Password Reset Link
+                                        </Button>
+                                        <Link
+                                            href={route('login')}
+                                            className="text-center text-sm underline-offset-4 hover:underline"
+                                        >
+                                            Back to Login
+                                        </Link>
+                                    </div>
+                                </div>
+                            </form>
+                        </CardContent>
+                    </Card>
+                    <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary">
+                        By clicking continue, you agree to our <Link href={route('terms-of-service')}>Terms of Service</Link>
                     </div>
-                    <h2 className="mt-6 text-3xl font-bold text-gray-900">
-                        Forgot Password
-                    </h2>
                 </div>
-
-                <div className="text-sm text-gray-600">
-                    Forgot your password? No problem. Just let us know your email
-                    address and we will email you a password reset link that will
-                    allow you to choose a new one.
-                </div>
-
-                {status && (
-                    <div className="text-sm font-medium text-green-600">
-                        {status}
-                    </div>
-                )}
-
-                <form onSubmit={submit} className="mt-8 space-y-6">
-                    <div className="space-y-4">
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Email
-                            </label>
-                            <Input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={data.email}
-                                className="mt-1"
-                                onChange={(e) => setData('email', e.target.value)}
-                            />
-                            {errors.email && (
-                                <span className="text-sm text-red-500">{errors.email}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                        <Link
-                            href={route('login')}
-                            className="text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Back to Login
-                        </Link>
-                        <Button type="submit" disabled={processing}>
-                            Email Password Reset Link
-                        </Button>
-                    </div>
-                </form>
             </div>
         </div>
     );

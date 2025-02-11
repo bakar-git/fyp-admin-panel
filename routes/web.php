@@ -9,6 +9,10 @@ Route::get('/', function () {
     redirect()->route('dashboard');
 });
 
+Route::get('terms-of-service', function () {
+   return Inertia::render('TermsOfService');
+})->name('terms-of-service');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
