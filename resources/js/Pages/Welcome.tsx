@@ -165,9 +165,11 @@ export default function Welcome() {
               Manage all your social media accounts in one place with the power of AI
             </p>
             <div className="flex justify-center gap-4">
+              <a href="/login">
               <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition duration-300">
                 Get Started
               </button>
+              </a>
               <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-blue-600 transition duration-300">
                 Watch Demo
               </button>
@@ -263,9 +265,11 @@ export default function Welcome() {
                 <li className="flex items-center"><span className="text-green-500 mr-2">✓</span> AI-Powered Analytics</li>
                 <li className="flex items-center"><span className="text-green-500 mr-2">✓</span> 24/7 Support</li>
               </ul>
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700">
-                Get Started Now
-              </button>
+              <a href="/login">
+                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700">
+                  Get Started Now
+                </button>
+              </a>
             </div>
           </div>
         </div>

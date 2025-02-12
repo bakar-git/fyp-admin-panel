@@ -141,6 +141,14 @@ class DashboardController extends Controller
         ["date" => "2025-02-27", "earnings" => 410],
         ["date" => "2025-02-28", "earnings" => 475]
     ];
+
+    private $subscriptionData = [
+        'totalSubscribers' => 150,
+        'activeSubscriptions' => 125,
+        'monthlyRecurringRevenue' => 625, // 125 active * $5
+        'retentionRate' => 83, // (125 active / 150 total) * 100
+    ];
+
     public function index()
     {
         return Inertia::render('Dashboard/Dashboard', [
@@ -150,6 +158,7 @@ class DashboardController extends Controller
                 ->latest('created_at')
                 ->take(5)
                 ->get(),
+            "subscriptionData" => $this->subscriptionData,
         ]);
     }
 }
