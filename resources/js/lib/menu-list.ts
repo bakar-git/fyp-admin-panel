@@ -52,12 +52,6 @@ export function getMenuList(pathname: string): Group[] {
           label: "All Users",
           icon: Users2Icon,
           submenus: []
-        },
-        {
-          href: "/new-users",
-          label: "Create New User",
-          icon: UserPlus2Icon,
-          submenus: []
         }
       ]
     },

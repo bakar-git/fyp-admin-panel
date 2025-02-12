@@ -2,6 +2,7 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { useSidebar } from "@/components/layout/sidebar-hooks/use-sidebar";
 import { useStore } from "@/components/layout/sidebar-hooks/use-store";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function MainLayout({
   children
@@ -25,6 +26,7 @@ export default function MainLayout({
       >
         {children}
       </main>
+      <Toaster richColors />
     </>
   );
 }

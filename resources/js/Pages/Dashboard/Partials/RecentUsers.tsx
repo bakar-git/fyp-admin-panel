@@ -48,7 +48,7 @@ export default function RecentUsers({recentUserTableData}: { recentUserTableData
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>User</TableHead>
+                            <TableHead>Name</TableHead>
                             <TableHead>Email</TableHead>
                             <TableHead>Status</TableHead>
                             <TableHead>Joined</TableHead>
@@ -58,10 +58,6 @@ export default function RecentUsers({recentUserTableData}: { recentUserTableData
                         {recentUserTableData.map((user) => (
                             <TableRow key={user.id}>
                                 <TableCell className="flex items-center gap-2">
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarImage src={user.avatar} alt={user.name} />
-                                        <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-                                    </Avatar>
                                     <span className="font-medium">{user.name}</span>
                                 </TableCell>
                                 <TableCell>{user.email}</TableCell>

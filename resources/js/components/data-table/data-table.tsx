@@ -23,8 +23,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { useMemo, useState, ReactNode } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, Plus, PlusIcon } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Plus, PlusIcon } from "lucide-react"
 import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
 import { DataTablePagination } from "@/components/data-table/data-table-pagination"
 import { cn } from "@/lib/utils"
@@ -71,7 +70,6 @@ export function DataTable<TData>({
     tableTitle,
     topOptions,
 }: DataTableProps<TData>) {
-    const navigate = useNavigate();
     const [sorting, setSorting] = useState<SortingState>([])
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
         []
@@ -151,10 +149,6 @@ export function DataTable<TData>({
     return (
         <div className="mx-auto w-full space-y-5">
             <div className="flex items-center gap-4">
-                <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => navigate(-1)}>
-                    <ChevronLeft className="h-4 w-4" />
-                    <span className="sr-only">Back</span>
-                </Button>
                 <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">{tableTitle}</h1>
                 <div className="flex ml-auto space-x-2">
                     {topOptions && topOptions}
