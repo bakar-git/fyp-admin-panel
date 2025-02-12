@@ -22,9 +22,7 @@ export interface RecentUserTableData {
     id: number;
     name: string;
     email: string;
-    avatar: string;
-    paymentStatus: 'paid' | 'pending' | 'failed';
-    createdAt: Date;
+    created_at: Date;
 }
 
 export default function RecentUsers({recentUserTableData}: { recentUserTableData: RecentUserTableData[] }) {
@@ -50,7 +48,6 @@ export default function RecentUsers({recentUserTableData}: { recentUserTableData
                         <TableRow>
                             <TableHead>Name</TableHead>
                             <TableHead>Email</TableHead>
-                            <TableHead>Status</TableHead>
                             <TableHead>Joined</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -62,16 +59,7 @@ export default function RecentUsers({recentUserTableData}: { recentUserTableData
                                 </TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>
-                                    <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
-                                        user.paymentStatus === 'paid' ? 'bg-green-100 text-green-700' :
-                                        user.paymentStatus === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                                        'bg-red-100 text-red-700'
-                                    }`}>
-                                        {user.paymentStatus.charAt(0).toUpperCase() + user.paymentStatus.slice(1)}
-                                    </span>
-                                </TableCell>
-                                <TableCell>
-                                    {moment(user.createdAt).fromNow()} 
+                                    {moment(user.created_at).fromNow()} 
                                 </TableCell>
                             </TableRow>
                         ))}

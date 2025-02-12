@@ -26,6 +26,7 @@ export const getColumns = ({ onRowEdit, onRowDelete }: DataTableColumnProps<User
         ),
         enableSorting: false,
         enableHiding: false,
+        maxSize: 50,
     },
     {
         accessorKey: "name",
@@ -36,6 +37,7 @@ export const getColumns = ({ onRowEdit, onRowDelete }: DataTableColumnProps<User
         accessorKey: "email",
         meta: { displayName: "Email" },
         header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
+        size: 200,
     },
     {
         accessorKey: "created_at",
@@ -50,6 +52,30 @@ export const getColumns = ({ onRowEdit, onRowDelete }: DataTableColumnProps<User
         cell: ({ getValue }) => {
             const value = getValue<string>();
             return value ? moment(value).format("DD MMM YYYY") : "Never";
+        },
+    },
+    {
+        accessorKey: "payment_status",
+        meta: { displayName: "Payment Status" },
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Payment Status" />,
+        cell: ({ getValue }) => {
+            const value = getValue<string>();
+            return (<span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
+                value === 'active' ? 'bg-primary text-primary-foreground' :
+                value === 'inactive' ? 'bg-destructive text-destructive-foreground' :
+                'bg-red-100 text-red-700'
+            }`}>
+                {value.charAt(0).toUpperCase() + value.slice(1)}
+            </span>);
+        },
+    },
+    {
+        accessorKey: "subscription_end",
+        meta: { displayName: "Subscription Ends" },
+        header: ({ column }) => <DataTableColumnHeader column={column} title="Subscription Ends" />,
+        cell: ({ getValue }) => {
+            const value = getValue<number>();
+            return value ? moment.unix(value).format("DD MMM YYYY") : "Never";
         },
     },
     {

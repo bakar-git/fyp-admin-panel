@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Laravel\Cashier\Subscription;
 
 class UserController extends Controller
 {
@@ -13,9 +14,23 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = User::where('id', '!=', auth()->user()->id)
+            ->get()
+            ->map(function ($user) {
+                return [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'created_at' => $user->created_at,
+                    'email_verified_at' => $user->email_verified_at,
+                    'payment_status' => $user->subscribed(config('cashier.product_id')) ? 'active' : 'inactive',
+                    'subscription_end' => $user->subscription(config('cashier.product_id')) ? 
+                        $user->subscription(config('cashier.product_id'))->asStripeSubscription()->current_period_end : null
+                ];
+            });
+
         return Inertia::render('User/Index', [
-            // 'allUsers' => User::select('id', 'name', 'email', 'created_at', 'email_verified_at')->where('id', '!=', auth()->user()->id)->get(),
-            'allUsers' => User::select('id', 'name', 'email', 'created_at', 'email_verified_at')->get(),
+            'allUsers' => $users
         ]);
     }
 

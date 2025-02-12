@@ -9,7 +9,8 @@ import {
   LayoutGridIcon,
   UsersIcon,
   Users2Icon,
-  UserPlus2Icon
+  UserPlus2Icon,
+  PackageIcon
 } from "lucide-react";
 
 type Submenu = {
@@ -51,6 +52,17 @@ export function getMenuList(pathname: string): Group[] {
           href: "/users",
           label: "All Users",
           icon: Users2Icon,
+          submenus: []
+        }
+      ]
+    },
+    {
+      groupLabel: "Subscriptions",
+      menus: [
+        {
+          href: "/checkout/index",
+          label: "Plans",
+          icon: PackageIcon,
           submenus: []
         }
       ]

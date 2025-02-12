@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -140,61 +141,15 @@ class DashboardController extends Controller
         ["date" => "2025-02-27", "earnings" => 410],
         ["date" => "2025-02-28", "earnings" => 475]
     ];
-    private $recentUsers = [
-        [
-            "id" => 9,
-            "name" => "James Taylor",
-            "email" => "james@example.com",
-            "avatar" => "/avatars/4.png",
-            "paymentStatus" => "paid",
-            "createdAt" => "2025-02-08",
-        ],
-        [
-            "id" => 4,
-            "name" => "Emily Davis",
-            "email" => "emily@example.com",
-            "avatar" => "/avatars/4.png",
-            "paymentStatus" => "overdue",
-            "createdAt" => "2025-01-25",
-        ],
-        [
-            "id" => 1,
-            "name" => "John Doe",
-            "email" => "john@example.com",
-            "avatar" => "/avatars/1.png",
-            "paymentStatus" => "paid",
-            "createdAt" => "2025-01-15",
-        ],
-        [
-            "id" => 10,
-            "name" => "Michelle Martinez",
-            "email" => "michelle@example.com",
-            "avatar" => "/avatars/5.png",
-            "paymentStatus" => "pending",
-            "createdAt" => "2024-02-10",
-        ],
-        [
-            "id" => 8,
-            "name" => "Lisa Anderson",
-            "email" => "lisa@example.com",
-            "avatar" => "/avatars/3.png",
-            "paymentStatus" => "cancelled",
-            "createdAt" => "2024-02-07",
-        ],
-        [
-            "id" => 7,
-            "name" => "David Lee",
-            "email" => "david@example.com",
-            "avatar" => "/avatars/2.png",
-            "paymentStatus" => "paid",
-            "createdAt" => "2024-02-05",
-        ],
-    ];
     public function index()
     {
         return Inertia::render('Dashboard/Dashboard', [
             "earningsChartData" => $this->chartData,
-            "recentUserTableData" => $this->recentUsers
+            "recentUserTableData" => User::select('id', 'name', 'email', 'created_at')
+                ->whereNot('id', 1)
+                ->latest('created_at')
+                ->take(5)
+                ->get(),
         ]);
     }
 }
