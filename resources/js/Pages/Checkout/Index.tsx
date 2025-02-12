@@ -34,10 +34,11 @@ interface InvoiceData {
   downloadUrl: string;
 }
 
-export default function Index({ subscribed, subscriptionData, invoices }: PageProps<{ 
+export default function Index({ subscribed, subscriptionData, invoices, isCurrentUser }: PageProps<{ 
   subscribed: boolean,
   subscriptionData: SubscriptionData | null,
-  invoices: InvoiceData[] | null
+  invoices: InvoiceData[] | null,
+  isCurrentUser: boolean,
 }>) {
   // Add calculations
   const calculateDaysRemaining = () => {
@@ -112,9 +113,9 @@ export default function Index({ subscribed, subscriptionData, invoices }: PagePr
                     </div>
                   </div>
                 ) : (
-                  <a href="/checkout" className='w-full'>
+                  isCurrentUser ? (<a href="/checkout" className='w-full'>
                     <Button className="w-full" variant={'default'}>Subscribe Now</Button>
-                  </a>
+                  </a>) : (<div className="w-full text-center text-muted-foreground">Not Subscribed</div>)
                 )}
               </CardFooter>
             </Card>

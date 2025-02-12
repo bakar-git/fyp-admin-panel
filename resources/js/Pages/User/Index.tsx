@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getColumns } from './columns';
 import { UserDialog } from './user-dialog';
 import { toast } from 'sonner';
@@ -100,6 +100,10 @@ export default function Index({allUsers} : PageProps<{ allUsers: User[] }>) {
         setModalOpen(true);
     };
 
+    const handleDoubleClick = (e: React.MouseEvent, row: User) => { 
+        router.get(route('users.show', {id: row.id}));
+    }
+
     return (
         <ContentLayout items={breadcrumbData}>
             <DataTable 
@@ -107,6 +111,7 @@ export default function Index({allUsers} : PageProps<{ allUsers: User[] }>) {
                 onRowEdit={handleRowEditRequest} 
                 onRowCreate={handleRowCreateRequest} 
                 onRowDelete={handleRowDelete} 
+                OnDoubleClick={handleDoubleClick}
                 getColumns={getColumns} 
                 tableTitle='Users List' 
             />

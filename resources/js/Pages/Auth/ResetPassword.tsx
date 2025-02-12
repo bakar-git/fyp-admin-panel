@@ -2,7 +2,10 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/components/LogoIcon';
+import LogoFull from '@/components/LogoFull';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Link } from '@inertiajs/react';
 
 export default function ResetPassword({
     token,
@@ -27,82 +30,71 @@ export default function ResetPassword({
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center">
+        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
             <Head title="Reset Password" />
-            <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-lg">
-                <div className="text-center">
-                    <div className="flex items-center justify-center h-14">
-                        <LogoV1 className="size-20" />
-                        <h1 className="font-bold">POSTIFY</h1>
-                    </div>
-                    <h2 className="mt-6 text-3xl font-bold text-gray-900">
-                        Reset Password
-                    </h2>
-                </div>
+            <div className="flex w-full max-w-sm flex-col gap-6">
+                <Link href='/'>
+                    <LogoFull />
+                </Link>
+                <Card>
+                    <CardHeader className="text-center">
+                        <CardTitle className="text-xl">Reset Password</CardTitle>
+                        <CardDescription>
+                            Enter your new password below
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <form onSubmit={submit}>
+                            <div className="grid gap-6">
+                                <div className="grid gap-2">
+                                    <Label htmlFor="email">Email</Label>
+                                    <Input
+                                        id="email"
+                                        type="email"
+                                        value={data.email}
+                                        autoComplete="username"
+                                        onChange={(e) => setData('email', e.target.value)}
+                                    />
+                                    {errors.email && (
+                                        <span className="text-sm text-red-500">{errors.email}</span>
+                                    )}
+                                </div>
 
-                <form onSubmit={submit} className="mt-8 space-y-6">
-                    <div className="space-y-4">
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Email
-                            </label>
-                            <Input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={data.email}
-                                className="mt-1"
-                                autoComplete="username"
-                                onChange={(e) => setData('email', e.target.value)}
-                            />
-                            {errors.email && (
-                                <span className="text-sm text-red-500">{errors.email}</span>
-                            )}
-                        </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        value={data.password}
+                                        autoComplete="new-password"
+                                        onChange={(e) => setData('password', e.target.value)}
+                                    />
+                                    {errors.password && (
+                                        <span className="text-sm text-red-500">{errors.password}</span>
+                                    )}
+                                </div>
 
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Password
-                            </label>
-                            <Input
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={data.password}
-                                className="mt-1"
-                                autoComplete="new-password"
-                                onChange={(e) => setData('password', e.target.value)}
-                            />
-                            {errors.password && (
-                                <span className="text-sm text-red-500">{errors.password}</span>
-                            )}
-                        </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="password_confirmation">Confirm Password</Label>
+                                    <Input
+                                        id="password_confirmation"
+                                        type="password"
+                                        value={data.password_confirmation}
+                                        autoComplete="new-password"
+                                        onChange={(e) => setData('password_confirmation', e.target.value)}
+                                    />
+                                    {errors.password_confirmation && (
+                                        <span className="text-sm text-red-500">{errors.password_confirmation}</span>
+                                    )}
+                                </div>
 
-                        <div>
-                            <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700">
-                                Confirm Password
-                            </label>
-                            <Input
-                                id="password_confirmation"
-                                type="password"
-                                name="password_confirmation"
-                                value={data.password_confirmation}
-                                className="mt-1"
-                                autoComplete="new-password"
-                                onChange={(e) => setData('password_confirmation', e.target.value)}
-                            />
-                            {errors.password_confirmation && (
-                                <span className="text-sm text-red-500">{errors.password_confirmation}</span>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="flex justify-end">
-                        <Button type="submit" disabled={processing}>
-                            Reset Password
-                        </Button>
-                    </div>
-                </form>
+                                <Button type="submit" className="w-full" disabled={processing}>
+                                    Reset Password
+                                </Button>
+                            </div>
+                        </form>
+                    </CardContent>
+                </Card>
             </div>
         </div>
     );

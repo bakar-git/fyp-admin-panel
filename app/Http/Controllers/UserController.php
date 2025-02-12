@@ -66,7 +66,37 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if (!$user){
+            return inertia_location(route('users.index'));
+        }
+        $subscribed = $user->subscribed(config('cashier.product_id'));
+        
+        $subscriptionData = null;
+        $invoicesData = $user->invoices()->map(function ($invoice) {
+            return [
+                'id' => $invoice->id,
+                'total' => $invoice->total(),
+                'date' => $invoice->date()->toFormattedDateString(),
+                'downloadUrl' => $invoice->hosted_invoice_url,
+            ];
+        });
+
+        if ($subscribed) {
+            $subscription = $user->subscription(config('cashier.product_id'));
+            $subscriptionData = [
+                'status' => $subscription->stripe_status,
+                'current_period_end' => $subscription->asStripeSubscription()->current_period_end,
+                'start_date' => $subscription->created_at->format('M d, Y'),
+            ];
+        }
+
+        return Inertia::render('Checkout/Index', [
+            'subscribed' => $subscribed,
+            'subscriptionData' => $subscriptionData,
+            'invoices' => $invoicesData,
+            'isCurrentUser' => false
+        ]);
     }
 
     /**

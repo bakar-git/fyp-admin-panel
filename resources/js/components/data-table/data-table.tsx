@@ -48,7 +48,8 @@ interface DataTableProps<TData> {
     tableTitle: string
     onRowEdit: (updatedRow: TData) => void
     onRowDelete: (deletedRow: TData) => void
-    onRowCreate: () => void
+    onRowCreate: () => void,
+    OnDoubleClick: (e: React.MouseEvent, row: TData) => void,
     topOptions?: ReactNode;
 }
 
@@ -68,6 +69,7 @@ export function DataTable<TData>({
     onRowDelete,
     onRowCreate,
     tableTitle,
+    OnDoubleClick,
     topOptions,
 }: DataTableProps<TData>) {
     const [sorting, setSorting] = useState<SortingState>([])
@@ -224,7 +226,7 @@ export function DataTable<TData>({
                                                 <TableRow
                                                     key={row.id}
                                                     data-state={row.getIsSelected() && "selected"}
-                                                    onDoubleClick={() => onRowEdit(row.original)}
+                                                    onDoubleClick={(e) => OnDoubleClick(e, row.original)}
                                                 >
                                                     {row.getVisibleCells().map((cell) => (
                                                         <TableCell

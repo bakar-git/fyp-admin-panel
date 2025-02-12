@@ -1,8 +1,10 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, Link } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import LogoV1 from '@/components/LogoIcon';
+import LogoFull from '@/components/LogoFull';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -18,47 +20,43 @@ export default function ConfirmPassword() {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center">
+        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
             <Head title="Confirm Password" />
-            <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-lg">
-                <div className="text-center">
-                    <div className="flex items-center justify-center h-14">
-                        <LogoV1 className="size-20" />
-                        <h1 className="font-bold">POSTIFY</h1>
-                    </div>
-                    <h2 className="mt-6 text-3xl font-bold text-gray-900">
-                        Confirm Password
-                    </h2>
-                    <p className="mt-2 text-sm text-gray-600">
-                        This is a secure area of the application. Please confirm your
-                        password before continuing.
-                    </p>
-                </div>
+            <div className="flex w-full max-w-sm flex-col gap-6">
+                <Link href='/'>
+                    <LogoFull />
+                </Link>
+                <Card>
+                    <CardHeader className="text-center">
+                        <CardTitle className="text-xl">Confirm Password</CardTitle>
+                        <CardDescription>
+                            This is a secure area of the application. Please confirm your
+                            password before continuing.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <form onSubmit={submit}>
+                            <div className="grid gap-6">
+                                <div className="grid gap-2">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        value={data.password}
+                                        onChange={(e) => setData('password', e.target.value)}
+                                    />
+                                    {errors.password && (
+                                        <span className="text-sm text-red-500">{errors.password}</span>
+                                    )}
+                                </div>
 
-                <form onSubmit={submit} className="mt-8 space-y-6">
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                            Password
-                        </label>
-                        <Input
-                            id="password"
-                            type="password"
-                            name="password"
-                            value={data.password}
-                            className="mt-1"
-                            onChange={(e) => setData('password', e.target.value)}
-                        />
-                        {errors.password && (
-                            <span className="text-sm text-red-500">{errors.password}</span>
-                        )}
-                    </div>
-
-                    <div className="flex justify-end">
-                        <Button type="submit" disabled={processing}>
-                            Confirm
-                        </Button>
-                    </div>
-                </form>
+                                <Button type="submit" className="w-full" disabled={processing}>
+                                    Confirm
+                                </Button>
+                            </div>
+                        </form>
+                    </CardContent>
+                </Card>
             </div>
         </div>
     );

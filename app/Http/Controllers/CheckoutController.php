@@ -35,6 +35,7 @@ class CheckoutController extends Controller
             'subscribed' => $subscribed,
             'subscriptionData' => $subscriptionData,
             'invoices' => $invoicesData,
+            'isCurrentUser' => true
         ]);
     }
 

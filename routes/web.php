@@ -17,7 +17,7 @@ Route::get('terms-of-service', function () {
 })->name('terms-of-service');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
 
    Route::get('users', [UserController::class, 'index'])->name('users.index');
+   Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
    Route::post('users', [UserController::class, 'store'])->name('users.store');
    Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
