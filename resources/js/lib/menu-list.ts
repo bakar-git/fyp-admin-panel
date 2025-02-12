@@ -5,7 +5,11 @@ import {
   Bookmark,
   SquarePen,
   LayoutGrid,
-  LucideIcon
+  LucideIcon,
+  LayoutGridIcon,
+  UsersIcon,
+  Users2Icon,
+  UserPlus2Icon
 } from "lucide-react";
 
 type Submenu = {
@@ -35,55 +39,57 @@ export function getMenuList(pathname: string): Group[] {
         {
           href: "/dashboard",
           label: "Dashboard",
-          icon: LayoutGrid,
+          icon: LayoutGridIcon,
           submenus: []
         }
       ]
     },
     {
-      groupLabel: "Contents",
-      menus: [
-        {
-          href: "",
-          label: "Posts",
-          icon: SquarePen,
-          submenus: [
-            {
-              href: "/dashboard/posts",
-              label: "All Posts"
-            },
-            {
-              href: "/posts/new",
-              label: "New Post"
-            }
-          ]
-        },
-        {
-          href: "/categories",
-          label: "Categories",
-          icon: Bookmark
-        },
-        {
-          href: "/tags",
-          label: "Tags",
-          icon: Tag
-        }
-      ]
-    },
-    {
-      groupLabel: "Settings",
+      groupLabel: "Users",
       menus: [
         {
           href: "/users",
-          label: "Users",
-          icon: Users
+          label: "All Users",
+          icon: Users2Icon,
+          submenus: []
         },
         {
-          href: "/account",
-          label: "Account",
-          icon: Settings
-        },
+          href: "/new-users",
+          label: "Create New User",
+          icon: UserPlus2Icon,
+          submenus: []
+        }
       ]
-    }
+    },
+    // {
+    //   groupLabel: "Contents",
+    //   menus: [
+    //     {
+    //       href: "",
+    //       label: "Posts",
+    //       icon: SquarePen,
+    //       submenus: [
+    //         {
+    //           href: "/dashboard/posts",
+    //           label: "All Posts"
+    //         },
+    //         {
+    //           href: "/posts/new",
+    //           label: "New Post"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       href: "/categories",
+    //       label: "Categories",
+    //       icon: Bookmark
+    //     },
+    //     {
+    //       href: "/tags",
+    //       label: "Tags",
+    //       icon: Tag
+    //     }
+    //   ]
+    // },
   ];
 }

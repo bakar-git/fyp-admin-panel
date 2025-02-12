@@ -38,7 +38,7 @@ export function UserNav() {
                 className="relative size-10 rounded-lg"
               >
                 <Avatar className="border-2 rounded-lg">
-                  <AvatarImage src="blank.png" className="dark:invert" alt="Avatar" />
+                  <AvatarImage src="/avatars/blank.png" className="dark:invert" alt="Avatar" />
                   <AvatarFallback className="bg-transparent">PP</AvatarFallback>
                 </Avatar>
               </Button>
@@ -52,7 +52,7 @@ export function UserNav() {
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar className="border-2 rounded-lg">
-                  <AvatarImage src="blank.png" className="dark:invert" alt="Avatar" />
+                  <AvatarImage src="/avatars/blank.png" className="dark:invert" alt="Avatar" />
                   <AvatarFallback className="bg-transparent">PP</AvatarFallback>
                 </Avatar>
             <div className="grid ml-2 flex-1 text-left text-sm leading-tight">
