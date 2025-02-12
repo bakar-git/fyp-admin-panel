@@ -11,6 +11,7 @@ export default function Dashboard({ earningsChartData, recentUserTableData } : P
     return (
         <ContentLayout items={breadcrumbData} >
             <div className='space-y-4'>
+                <Head title="Dashboard" />
                 <EarningsChart earningsChartData={earningsChartData} />
                 <RecentUsers recentUserTableData={recentUserTableData} />
             </div>
