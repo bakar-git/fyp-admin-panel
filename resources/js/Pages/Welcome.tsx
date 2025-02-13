@@ -134,12 +134,14 @@ export default function Welcome() {
                   Login
                 </button>
               </a>
-              <button className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isScrolled
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
-                : 'bg-white text-blue-600 hover:bg-blue-50'
-                }`}>
-                Download
+              <a href="/register">
+                <button className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isScrolled
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-white text-blue-600 hover:bg-blue-50'
+                  }`}>
+                  Register
               </button>
+              </a>
             </div>
           </div>
         </div>

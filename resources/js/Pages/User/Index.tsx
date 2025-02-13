@@ -6,7 +6,7 @@ import { DataTable } from '@/components/data-table/data-table';
 import { User } from '@/models/user';
 import { ContentLayout } from '@/components/layout/ContentLayout';
 import { PageProps } from '@/types';
-import { router } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 
 export default function Index({allUsers} : PageProps<{ allUsers: User[] }>) {
     const breadcrumbData = [
@@ -106,6 +106,7 @@ export default function Index({allUsers} : PageProps<{ allUsers: User[] }>) {
 
     return (
         <ContentLayout items={breadcrumbData}>
+            <Head title="All Users" />
             <DataTable 
                 data={allUsers} 
                 onRowEdit={handleRowEditRequest} 

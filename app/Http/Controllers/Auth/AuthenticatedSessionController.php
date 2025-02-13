@@ -37,7 +37,10 @@ class AuthenticatedSessionController extends Controller
         auth()->user()->save();
 
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+        return redirect()->intended(route('checkout.index', absolute: false));
     }
 
     /**

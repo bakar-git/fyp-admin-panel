@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => null,
         ]);
 
-        User::factory(10)
+        User::factory(8)
         ->sequence(fn ($sequence) => [
             'password' => bcrypt('12345678'),
             'created_at' => Carbon::now()->subDays(rand(1, 30))

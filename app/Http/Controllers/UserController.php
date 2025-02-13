@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', auth()->user()->id)
+        $users = User::where('id', '!=', auth()->user()->id)->orderByDesc('id')
             ->get()
             ->map(function ($user) {
                 return [
@@ -59,6 +59,8 @@ class UserController extends Controller
             'email' => $validated['email'],
             'password' => $validated['password'],
         ]);
+
+        $user->assignRole('user');
     }
 
     /**

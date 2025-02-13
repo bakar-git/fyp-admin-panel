@@ -107,6 +107,14 @@ export default function Login({
                     <Button type="submit" className="w-full" disabled={processing}>
                       Login
                     </Button>
+                    <div className="text-center">
+                      <span className="text-sm text-muted-foreground">
+                        Don't have an account?{' '}
+                        <Link href={route('register')} className="underline-offset-4 hover:underline">
+                          Register
+                        </Link>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </form>

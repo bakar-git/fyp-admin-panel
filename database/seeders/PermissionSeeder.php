@@ -14,10 +14,10 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create(['name' => 'manage users']);
-        Permission::create(['name' => 'can subscribe']);
+        Permission::create(['name' => 'manage-users']);
+        Permission::create(['name' => 'view-plans']);
 
-        Role::where('name', 'admin')->first()->givePermissionTo('manage users');
-        Role::where('name', 'user')->first()->givePermissionTo('can subscribe');
+        Role::where('name', 'admin')->first()->givePermissionTo('manage-users');
+        Role::where('name', 'user')->first()->givePermissionTo('view-plans');
     }
 }

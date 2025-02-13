@@ -18,22 +18,27 @@ Route::get('terms-of-service', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('can:manage-users');
 
 
    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+   Route::group(['middleware' => 'can:manage-users'], function () {
+      Route::get('users', [UserController::class, 'index'])->name('users.index');
+      Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+      Route::post('users', [UserController::class, 'store'])->name('users.store');
+      Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
+      Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+   });
 
-   Route::get('users', [UserController::class, 'index'])->name('users.index');
-   Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
-   Route::post('users', [UserController::class, 'store'])->name('users.store');
-   Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
-   Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+   
 
 
-   Route::prefix('checkout')->group(function () {
+   Route::prefix('checkout')->middleware('can:view-plans')->group(function () {
       Route::get('/', [CheckoutController::class, 'checkout'])->name('checkout');
       Route::get('index', [CheckoutController::class, 'index'])->name('checkout.index');
       

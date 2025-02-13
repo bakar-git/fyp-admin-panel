@@ -30,6 +30,7 @@ type Menu = {
 type Group = {
   groupLabel: string;
   menus: Menu[];
+  permission?: string;
 };
 
 export function getMenuList(pathname: string): Group[] {
@@ -43,7 +44,8 @@ export function getMenuList(pathname: string): Group[] {
           icon: LayoutGridIcon,
           submenus: []
         }
-      ]
+      ],
+      permission: "manage-users"
     },
     {
       groupLabel: "Users",
@@ -54,7 +56,8 @@ export function getMenuList(pathname: string): Group[] {
           icon: Users2Icon,
           submenus: []
         }
-      ]
+      ],
+      permission: "manage-users"
     },
     {
       groupLabel: "Subscriptions",
@@ -65,7 +68,8 @@ export function getMenuList(pathname: string): Group[] {
           icon: PackageIcon,
           submenus: []
         }
-      ]
+      ],
+      permission: "view-plans"
     },
     // {
     //   groupLabel: "Contents",

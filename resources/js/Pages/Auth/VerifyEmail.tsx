@@ -39,7 +39,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
                         <form onSubmit={submit}>
                             <div className="flex flex-col gap-4">
                                 <Button type="submit" className="w-full" disabled={processing}>
-                                    Resend Verification Email
+                                    Send Verification Email
                                 </Button>
 
                                 <Link
